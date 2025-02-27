@@ -1,5 +1,7 @@
 package es.unican.is2.services;
 
+import es.unican.is2.excepciones.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

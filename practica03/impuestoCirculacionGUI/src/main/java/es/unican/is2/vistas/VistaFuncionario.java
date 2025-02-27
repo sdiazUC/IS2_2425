@@ -1,3 +1,9 @@
+package es.unican.is2.vistas;
+
+import es.unican.is2.clases.*;
+import es.unican.is2.excepciones.*;
+import es.unican.is2.interfaces.*;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

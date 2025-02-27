@@ -1,5 +1,9 @@
 package es.unican.is2.DAOs;
 
+import es.unican.is2.clases.*;
+import es.unican.is2.excepciones.*;
+import es.unican.is2.interfaces.*;
+import es.unican.is2.mappers.*;
 import es.unican.is2.services.H2ServerConnectionManager;
 
 import java.sql.Connection;

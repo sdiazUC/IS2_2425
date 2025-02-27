@@ -1,5 +1,8 @@
 package es.unican.is2.main;
 
+import es.unican.is2.DAOs.*;
+import es.unican.is2.vistas.*;
+
 /**
  * Clase principal que construye la aplicaci�n de tres capas y lanza su ejecuci�n
  */

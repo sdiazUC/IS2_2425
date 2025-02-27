@@ -1,5 +1,8 @@
 package es.unican.is2.mappers;
 
+import es.unican.is2.clases.*;
+import es.unican.is2.excepciones.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
