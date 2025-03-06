@@ -24,5 +24,11 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>es.unican.is2</groupId>
+            <artifactId>impuestoCirculacionCommon</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>
