@@ -1,5 +1,6 @@
 package es.unican.is2.main;
 
+import es.unican.is2.clases.*;
 import es.unican.is2.DAOs.*;
 import es.unican.is2.vistas.*;
 

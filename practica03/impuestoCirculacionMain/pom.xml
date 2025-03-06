@@ -27,6 +27,12 @@
 
         <dependency>
             <groupId>es.unican.is2</groupId>
+            <artifactId>impuestoCirculacionBusiness</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>es.unican.is2</groupId>
             <artifactId>impuestoCirculacionCommon</artifactId>
             <version>1.0</version>
         </dependency>
