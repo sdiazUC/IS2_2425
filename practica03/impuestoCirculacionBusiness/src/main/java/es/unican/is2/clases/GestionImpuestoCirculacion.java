@@ -8,9 +8,9 @@ import es.unican.is2.interfaces.*;
  */
 public class GestionImpuestoCirculacion implements IGestionContribuyentes, IGestionVehiculos, IInfoImpuestoCirculacion {
     private IContribuyentesDAO contribuyentesDAO;
-    private IVehiculosDao vehiculosDAO;
+    private IVehiculosDAO vehiculosDAO;
 
-    public GestionImpuestoCirculacion(IContribuyentesDAO contribuyentesDAO, IVehiculosDao vehiculosDAO) {
+    public GestionImpuestoCirculacion(IContribuyentesDAO contribuyentesDAO, IVehiculosDAO vehiculosDAO) {
         //TODO
     }
 
