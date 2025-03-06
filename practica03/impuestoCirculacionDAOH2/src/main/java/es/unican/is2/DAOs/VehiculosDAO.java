@@ -105,12 +105,68 @@ public class VehiculosDAO implements IVehiculosDAO {
 
 
 	public Vehiculo eliminaVehiculo(String matricula) throws DataAccessException {
-		//TODO
-		return null;
+		Vehiculo vehiculoAEliminar = vehiculoPorMatricula(matricula);
+		if (vehiculoAEliminar == null) {
+			return null;
+		}
+
+		Connection con = H2ServerConnectionManager.getConnection();
+
+		try {
+			Statement statement = con.createStatement();
+			String deleteStatement = String.format(
+				"delete from Vehiculos where matricula = '%s'",
+				matricula.toString()
+			);
+			statement.executeUpdate(deleteStatement);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DataAccessException();
+		}
+
+		return vehiculoAEliminar;
 	}
 
 	public Vehiculo actualizaVehiculo(Vehiculo nuevo) throws DataAccessException {
-		//TODO
-		return null;
+		if (vehiculoPorMatricula(nuevo.getMatricula()) == null) {
+			return null;
+		}
+
+		Connection con = H2ServerConnectionManager.getConnection();
+
+		try {
+			Statement statement = con.createStatement();
+			String updateStatement;
+			if (nuevo instanceof Turismo) {
+				Turismo t = (Turismo) nuevo;
+				updateStatement = String.format(
+					"update Vehiculos set fechaMatricula = '%s', motor = '%s', potencia = %d where matricula = '%s'",
+					t.getFechaMatriculacion().toString(),
+					t.getMotor().toString(),
+					t.getPotencia(),
+					t.getMatricula()
+				);
+			} else if (nuevo instanceof Motocicleta) {
+				Motocicleta m = (Motocicleta) nuevo;
+				updateStatement = String.format(
+					"update Vehiculos set fechaMatricula = '%s', motor = '%s', cilindrada = %d where matricula = '%s'",
+					m.getFechaMatriculacion().toString(),
+					m.getMotor().toString(),
+					m.getCilindrada(),
+					m.getMatricula()
+				);
+			} else {
+				return null;
+			}
+
+			statement.executeUpdate(updateStatement);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DataAccessException();
+		}
+
+		return nuevo;
 	}
 }

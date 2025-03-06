@@ -8,16 +8,23 @@ import java.time.LocalDate;
  */
 public abstract class Vehiculo {
 
-	// Clave primaria autogenerada
-	private long id;
-
+	private long id; // Clave primaria autogenerada
 	private String matricula;
 	private LocalDate fechaMatriculacion;
 	private TipoMotor motor;
 
-	// TODO
+	/**
+	 * Construye un objeto de Vehiculo.
+	 * @param id clave primaria autogenerada del objeto
+	 * @param matricula matricula del vehiculo
+	 * @param fechaMatriculacion fecha de matriculación del vehículo
+	 * @param motor motor del vehículo
+	 */
 	public Vehiculo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor) {
-		// TODO
+		this.id = id;
+		this.matricula = matricula;
+		this.fechaMatriculacion = fechaMatriculacion;
+		this.motor = motor;
 	}
 
 	/**
@@ -48,7 +55,6 @@ public abstract class Vehiculo {
 		return id;
 	}
 
-	// TODO
 	public abstract double precioImpuesto();
 
 }

@@ -73,7 +73,6 @@ public class ContribuyentesDAO implements IContribuyentesDAO {
 		return contribuyentes;
 	}
 
-
 	private Contribuyente procesaContribuyente(Connection con, ResultSet results) throws SQLException, DataAccessException {
 		Contribuyente result = ContribuyenteMapper.toContribuyente(results);
 		// Cargamos los empleados de la tienda
@@ -87,17 +86,25 @@ public class ContribuyentesDAO implements IContribuyentesDAO {
 		return result;
 	}
 
+    @Override
+    public Contribuyente actualizaContribuyente(Contribuyente nuevo) throws DataAccessException {
+        String updateStatement = String.format(
+                "update Contribuyentes set nombre='%s', apellido1='%s', apellido2='%s' where dni='%s'",
+                nuevo.getNombre(),
+                nuevo.getApellido1(),
+                nuevo.getApellido2(),
+                nuevo.getDni());
+        H2ServerConnectionManager.executeSqlStatement(updateStatement);
+        return contribuyente(nuevo.getDni());
+    }
 
-	@Override
-	public Contribuyente actualizaContribuyente(Contribuyente nuevo) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Contribuyente eliminaContribuyente(String dni) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    @Override
+    public Contribuyente eliminaContribuyente(String dni) throws DataAccessException {
+        Contribuyente eliminado = contribuyente(dni);
+        if (eliminado != null) {
+            String deleteStatement = "delete from Contribuyentes where dni = '" + dni + "'";
+            H2ServerConnectionManager.executeSqlStatement(deleteStatement);
+        }
+        return eliminado;
+    }
 }

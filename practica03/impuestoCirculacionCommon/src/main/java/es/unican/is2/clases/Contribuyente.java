@@ -17,9 +17,18 @@ public class Contribuyente {
 
     private List<Vehiculo> vehiculos = new LinkedList<Vehiculo>();
 
-    //TODO
+    /**
+     * Construye un objeto de Contribuyente.
+     * @param nombre nombre del contribuyente
+     * @param apellido1 primer apellido del contribuyente
+     * @param apellido2 segundo apellido del contribuyente
+     * @param dni dni del contribuyente
+     */
     public Contribuyente(String nombre, String apellido1, String apellido2, String dni) {
-		//TODO
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.dni = dni;
 	}
 
     /**
