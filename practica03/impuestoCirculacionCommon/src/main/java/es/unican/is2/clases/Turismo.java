@@ -8,7 +8,7 @@ import java.time.Period;
  */
 public class Turismo extends Vehiculo {
 
-	private double potencia;
+	private final double potencia;
 
 	public Turismo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, double potencia) {
 		super(id, matricula, fechaMatriculacion, motor);
@@ -24,7 +24,7 @@ public class Turismo extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
-		double precioSubtotal = 0;
+		double precioSubtotal;
 		double bonificacion = 0;
 
 		int antiguedad = Period.between(this.getFechaMatriculacion(), LocalDate.now()).getYears();

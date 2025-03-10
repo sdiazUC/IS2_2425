@@ -8,10 +8,10 @@ import java.time.LocalDate;
  */
 public abstract class Vehiculo {
 
-	private long id; // Clave primaria autogenerada
-	private String matricula;
-	private LocalDate fechaMatriculacion;
-	private TipoMotor motor;
+	private final long id; // Clave primaria autogenerada
+	private final String matricula;
+	private final LocalDate fechaMatriculacion;
+	private final TipoMotor motor;
 
 	/**
 	 * Construye un objeto de Vehiculo.

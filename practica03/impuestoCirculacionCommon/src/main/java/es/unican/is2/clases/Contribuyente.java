@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class Contribuyente {
 
-	private String dni;
-    private String nombre;
-    private String apellido1;
-    private String apellido2;
+	private final String dni;
+    private final String nombre;
+    private final String apellido1;
+    private final String apellido2;
 
     private List<Vehiculo> vehiculos = new LinkedList<Vehiculo>();
 

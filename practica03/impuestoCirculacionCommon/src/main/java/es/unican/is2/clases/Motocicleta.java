@@ -8,7 +8,7 @@ import java.time.Period;
  */
 public class Motocicleta extends Vehiculo {
 
-	private int cilindrada;
+	private final int cilindrada;
 
 	/**
 	 * Construye un objeto de Motocicleta.
@@ -33,7 +33,7 @@ public class Motocicleta extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
-		double precioSubtotal = 0;
+		double precioSubtotal;
 		double bonificacion = 0;
 
 		int antiguedad = Period.between(this.getFechaMatriculacion(), LocalDate.now()).getYears();

@@ -12,8 +12,8 @@ import es.unican.is2.interfaces.IVehiculosDAO;
  * circulación de un ayunamiento.
  */
 public class GestionImpuestoCirculacion implements IGestionContribuyentes, IGestionVehiculos, IInfoImpuestoCirculacion {
-    private IContribuyentesDAO contribuyentesDAO;
-    private IVehiculosDAO vehiculosDAO;
+    private final IContribuyentesDAO contribuyentesDAO;
+    private final IVehiculosDAO vehiculosDAO;
 
     public GestionImpuestoCirculacion(IContribuyentesDAO contribuyentesDAO, IVehiculosDAO vehiculosDAO) {
         this.contribuyentesDAO = contribuyentesDAO;
@@ -35,7 +35,7 @@ public class GestionImpuestoCirculacion implements IGestionContribuyentes, IGest
     public Contribuyente bajaContribuyente(String dni) throws DataAccessException {
         Contribuyente c = contribuyente(dni);
 
-        if (c.getVehiculos().size() != 0) {
+        if (c.getVehiculos().isEmpty()) {
             throw new DataAccessException();
         }
 
