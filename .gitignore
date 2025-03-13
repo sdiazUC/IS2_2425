@@ -1,0 +1,51 @@
+# Compiled class files
+target/
+out/
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse specific
+.classpath
+.project
+.settings/
+
+# NetBeans specific
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code specific
+.vscode/
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Maven wrapper files
+.mvn/
+!mvn/wrapper/maven-wrapper.jar
+!mvn/wrapper/maven-wrapper.properties
+
+# Build artifacts
+dependency-reduced-pom.xml
+release.properties
+
+# Test coverage reports
+site/
+jacoco.exec
