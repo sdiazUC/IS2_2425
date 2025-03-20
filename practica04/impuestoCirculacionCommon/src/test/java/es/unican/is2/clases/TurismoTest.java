@@ -1,10 +1,34 @@
 package es.unican.is2.clases;
 
+import es.unican.is2.excepciones.*;
+
+import java.beans.Transient;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class TurismoTest {
+    @Test
+    public void testConstructor() {
+        LocalDate currentDate = LocalDate.now();
+
+        // Potencia negativa
+        assertThrows(OperacionNoValidaException.class, () -> new Turismo(1, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, -3));
+
+        // Potencia 0
+        assertThrows(OperacionNoValidaException.class, () -> new Turismo(2, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, 0));
+
+        // Fecha de matriculación posterior a hoy
+        assertThrows(OperacionNoValidaException.class, () -> new Turismo(3, "5678DEF", currentDate.plusDays(1), TipoMotor.GASOLINA, 5));
+
+        // Caso válido
+        Turismo t = new Turismo(4, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, 5);
+        assertEquals("5678DEF", t.getMatricula());
+        assertEquals(4, t.getId());
+        assertEquals(5, t.getPotencia());
+    }
+
     @Test
     public void testGetPotencia() {
         Turismo t1 = new Turismo(1, "5678DEF", LocalDate.now().minusYears(1), TipoMotor.GASOLINA, 5);
@@ -15,13 +39,13 @@ public class TurismoTest {
     public void testPrecioImpuesto() {
         LocalDate currentDate = LocalDate.now();
 
+        // Potencia negativa
+        assertThrows(OperacionNoValidaException.class, () -> new Turismo(1, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, -3));
+
+        // Potencia 0
+        assertThrows(OperacionNoValidaException.class, () -> new Turismo(2, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, 0));
+
         // Casos de potencia baja
-        Turismo t1 = new Turismo(1, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, -3);
-        assertEquals(25, t1.precioImpuesto());
-
-        Turismo t2 = new Turismo(2, "5678DEF", currentDate.minusYears(1), TipoMotor.GASOLINA, 0);
-        assertEquals(25, t2.precioImpuesto());
-
         Turismo t3 = new Turismo(3, "5678DEF", currentDate.minusYears(1), TipoMotor.ELECTRICO, 3);
         assertEquals(6.25, t3.precioImpuesto());
 
