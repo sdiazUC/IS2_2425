@@ -3,6 +3,8 @@ package es.unican.is2.clases;
 import java.time.LocalDate;
 import java.time.Period;
 
+import es.unican.is2.excepciones.OperacionNoValidaException;
+
 /**
  * Clase que representa un vehiculo de tipo motocicleta
  */
@@ -20,6 +22,13 @@ public class Motocicleta extends Vehiculo {
 	 */
 	public Motocicleta(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, int cilindrada) {
 		super(id, matricula, fechaMatriculacion, motor);
+		if (cilindrada <= 0 ) {
+			throw new OperacionNoValidaException("La cilindrada es menor o igual a 0");
+		}
+
+		if (fechaMatriculacion.isAfter(LocalDate.now())) {
+			throw new OperacionNoValidaException("La fecha no es correcta");
+		}
 		this.cilindrada = cilindrada;
 	}
 
@@ -27,12 +36,12 @@ public class Motocicleta extends Vehiculo {
 	 * Retorna la cilindrada en CC de la motocicleta.
 	 */
 	public int getCilindrada() {
-		return cilindrada;
+		return cilindrada;	
 	}
 
 
 	@Override
-	public double precioImpuesto() {
+	public double precioImpuesto() {	
 		double precioSubtotal;
 		double bonificacion = 0;
 
@@ -44,7 +53,7 @@ public class Motocicleta extends Vehiculo {
 			precioSubtotal = 15;
 		} else if (this.cilindrada < 500) {
 			precioSubtotal = 30;
-		} else if (this.cilindrada < 100) {
+		} else if (this.cilindrada < 1000) {
 			precioSubtotal = 60;
 		} else {
 			precioSubtotal = 120;
@@ -62,5 +71,4 @@ public class Motocicleta extends Vehiculo {
 
 		return precioSubtotal * (1 - bonificacion);
 	}
-
 }
