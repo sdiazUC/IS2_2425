@@ -18,7 +18,7 @@ class MotocicletaTest {
     void setUp() {
         moto1 = new Motocicleta(1, "1234ABC", LocalDate.now().minusYears(26), TipoMotor.GASOLINA, 100);
         
-    }
+    }   
 
     @Test
     void testImpuesto() {

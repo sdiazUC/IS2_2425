@@ -92,9 +92,11 @@ public class GestionImpuestoCirculacion implements IGestionContribuyentes, IGest
     @Override
     public Contribuyente contribuyente(String dni) throws DataAccessException {
         Contribuyente c = contribuyentesDAO.contribuyente(dni);
+        /** 
         if (c == null) {
             throw new DataAccessException();
         }
+        */
         return c;
     }
 

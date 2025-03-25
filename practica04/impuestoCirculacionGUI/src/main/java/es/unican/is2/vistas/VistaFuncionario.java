@@ -92,11 +92,13 @@ public class VistaFuncionario extends JFrame {
 		txtDniContribuyente.setBounds(10, 51, 113, 20);
 		contentPane.add(txtDniContribuyente);
 		txtDniContribuyente.setColumns(10);
+		txtDniContribuyente.setName("txtDniContribuyente");
 
 		JLabel lblDniContribuyente = new JLabel("DNI Contribuyente");
 		lblDniContribuyente.setBounds(21, 27, 139, 14);
 		contentPane.add(lblDniContribuyente);
 		lblDniContribuyente.setName("lblDniContribuyente");
+		
 
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
@@ -110,7 +112,7 @@ public class VistaFuncionario extends JFrame {
 		listMatriculasVehiculos.setVisible(true);
 	}
 
-	private void rellenaDatosContribuyente(String dni) {
+	public void rellenaDatosContribuyente(String dni) {
 		DecimalFormat df = new DecimalFormat("0.00");
 		Contribuyente c;
 		try {
@@ -133,6 +135,5 @@ public class VistaFuncionario extends JFrame {
 			txtNombreContribuyente.setText("Error BBDD");
 			e.printStackTrace();
 		}
-
 	}
 }
