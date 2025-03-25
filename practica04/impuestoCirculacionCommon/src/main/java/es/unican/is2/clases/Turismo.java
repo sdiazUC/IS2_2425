@@ -3,6 +3,8 @@ package es.unican.is2.clases;
 import java.time.LocalDate;
 import java.time.Period;
 
+import es.unican.is2.excepciones.OperacionNoValidaException;
+
 /**
  * Clase que representa un vehiculo de tipo turismo.
  */
@@ -12,6 +14,12 @@ public class Turismo extends Vehiculo {
 
 	public Turismo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, double potencia) {
 		super(id, matricula, fechaMatriculacion, motor);
+		if (potencia <= 0) {
+			throw new OperacionNoValidaException("La potencia tiene que ser mayor que 0");
+		}
+		if (fechaMatriculacion.isAfter(LocalDate.now())) {
+			throw new OperacionNoValidaException("La fecha de matriculación no puede ser posterior a hoy");
+		}
 		this.potencia = potencia;
 	}
 
@@ -44,11 +52,11 @@ public class Turismo extends Vehiculo {
 		if (antiguedad > 25) {
 			bonificacion = 1;
 		} else if (this.getMotor() == TipoMotor.ELECTRICO) {
-			bonificacion = 0.75;
+			bonificacion = TipoMotor.ELECTRICO.getDescuentoImpuesto();
 		} else if (this.getMotor() == TipoMotor.HIBRIDO && antiguedad < 4) {
-			bonificacion = 0.75;
+			bonificacion = TipoMotor.HIBRIDO.getDescuentoImpuesto();
 		} else if (this.getMotor() == TipoMotor.GAS && antiguedad < 1) {
-			bonificacion = 0.5;
+			bonificacion = TipoMotor.GAS.getDescuentoImpuesto();
 		}
 
 		return precioSubtotal * (1 - bonificacion);
