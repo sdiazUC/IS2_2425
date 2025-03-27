@@ -31,16 +31,6 @@ public class ListaOrdenada<E extends Comparable<E>> implements IListaOrdenada<E>
 		lista.add(indice, elemento);
 	}
 
-	// public void add(E elemento) {
-	// 	int indice = 0;
-	// 	if (lista.size() != 0) {
-	// 		while (indice < lista.size() && elemento.compareTo(lista.get(indice)) > 0) {
-	// 			indice++;
-	// 		}
-	// 	}
-	// 	lista.add(indice, elemento);
-	// }
-
 	public E remove(int indice) {
 		E borrado = lista.remove(indice);
 		return borrado;
