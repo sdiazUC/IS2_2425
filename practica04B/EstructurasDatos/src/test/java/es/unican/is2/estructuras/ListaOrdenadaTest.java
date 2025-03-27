@@ -28,8 +28,8 @@ public class ListaOrdenadaTest {
         sut.add(6); // [3, 5, 6, 9]
         sut.add(8); // [3, 5, 6, 8, 9]
         sut.add(13); // [3, 5, 6, 8, 9, 13]
-        assertEquals(9, sut.get(4));
-        assertEquals(13, sut.get(5));
+        assertEquals(9, sut.get(4)); // coger un elemento intermedio
+        assertEquals(13, sut.get(5)); // coger el último elemento
 
         // get() con índice negativo
         assertThrows(IndexOutOfBoundsException.class, () -> sut.get(-1));
@@ -48,7 +48,6 @@ public class ListaOrdenadaTest {
         sut.add(3);
         assertEquals(3, sut.get(1));
 
-
         // add() con n elementos
         sut.add(5);
         sut.add(9);
@@ -56,6 +55,13 @@ public class ListaOrdenadaTest {
 
         // add() de un elemento null
         assertThrows(NullPointerException.class, () -> sut.add(null));
+
+        // add() con elementos repetidos
+        sut = new ListaOrdenada<>();
+        sut.add(3);
+        sut.add(3);
+        assertEquals(3, sut.get(0));
+        assertEquals(3, sut.get(1));
     }
 
     @Test
@@ -74,6 +80,12 @@ public class ListaOrdenadaTest {
         sut.add(9);
         assertEquals(5, sut.remove(1));
         assertEquals(2, sut.size());
+
+        // remove() con índice negativo
+        assertThrows(IndexOutOfBoundsException.class, () -> sut.remove(-1));
+
+        // remove() con índice mayor que el tamaño de la lista
+        assertThrows(IndexOutOfBoundsException.class, () -> sut.remove(3));
     }
 
     @Test
