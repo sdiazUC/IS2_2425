@@ -1,4 +1,4 @@
-
+package es.unican.is2.clases;
 
 /**
  * Clase que representa un valor en bolsa (paquete de acciones). 

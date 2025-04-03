@@ -1,4 +1,4 @@
-
+package es.unican.is2.clases;
 
 public abstract class Tarjeta {
 	
