@@ -1,8 +1,11 @@
 package es.unican.is2.clases;
 
+import es.unican.is2.excepciones.datoErroneoException;
+import es.unican.is2.excepciones.saldoInsuficienteException;
+
 public abstract class Tarjeta {
-	
-	protected String numero, titular, cvc;		
+
+	protected String numero, titular, cvc;
 	protected CuentaAhorro cuentaAsociada;
 
 	public Tarjeta(String numero, String titular, String cvc,
@@ -15,7 +18,7 @@ public abstract class Tarjeta {
 
 	/**
 	 * Retirada de dinero en cajero con la tarjeta
-	 * @param x Cantidad a retirar. 
+	 * @param x Cantidad a retirar.
 	 * @throws saldoInsuficienteException
 	 * @throws datoErroneoException
 	 */
@@ -30,5 +33,5 @@ public abstract class Tarjeta {
 	 */
 	public abstract void pagoEnEstablecimiento(String datos, double x)
 			throws saldoInsuficienteException, datoErroneoException;
-	
+
 }

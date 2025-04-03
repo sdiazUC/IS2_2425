@@ -1,12 +1,14 @@
 package es.unican.is2.clases;
 
+import es.unican.is2.excepciones.datoErroneoException;
+import es.unican.is2.excepciones.saldoInsuficienteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 public class Credito extends Tarjeta {
-	
+
 	private double credito;
 	private List<Movimiento> MovimientosMensuales;
 	private List<Movimiento> historicoMovimientos;
@@ -27,14 +29,14 @@ public class Credito extends Tarjeta {
 	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
 		if (x<0)
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		
+
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
 		m.setF(now);
 		m.setC("Retirada en cajero");
 		x += x * 0.05; // Comision por operacion con tarjetas credito
 		m.setI(-x);
-		
+
 		if (getGastosAcumulados()+x > credito)
 			throw new saldoInsuficienteException("Credito insuficiente");
 		else {
@@ -46,10 +48,10 @@ public class Credito extends Tarjeta {
 	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {
 		if (x<0)
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		
+
 		if (getGastosAcumulados() + x > credito)
 			throw new saldoInsuficienteException("Saldo insuficiente");
-		
+
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
 		m.setF(now);
@@ -57,7 +59,7 @@ public class Credito extends Tarjeta {
 		m.setI(-x);
 		MovimientosMensuales.add(m);
 	}
-	
+
     private double getGastosAcumulados() {
 		double r = 0.0;
 		for (int i = 0; i < this.MovimientosMensuales.size(); i++) {
@@ -66,8 +68,8 @@ public class Credito extends Tarjeta {
 		}
 		return r;
 	}
-	
-	
+
+
 	public LocalDate getCaducidadCredito() {
 		return this.cuentaAsociada.getCaducidadCredito();
 	}
@@ -86,10 +88,10 @@ public class Credito extends Tarjeta {
 			r += m.getI();
 		}
 		liq.setI(-r);
-	
+
 		if (r != 0)
 			cuentaAsociada.addMovimiento(liq);
-		
+
 		historicoMovimientos.addAll(MovimientosMensuales);
 		MovimientosMensuales.clear();
 	}
@@ -97,11 +99,11 @@ public class Credito extends Tarjeta {
 	public List<Movimiento> getMovimientosMensuales() {
 		return MovimientosMensuales;
 	}
-	
+
 	public CuentaAhorro getCuentaAsociada() {
 		return cuentaAsociada;
 	}
-	
+
 	public List<Movimiento> getMovimientos() {
 		return historicoMovimientos;
 	}
