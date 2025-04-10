@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
  * CCog/n = 0
  * DIT = 0
  * NOC = 0
- * CBO EFF = 1
- * CBO AFF = 2
+ * CBO EFF = 0
+ * CBO AFF = 2; clases: Movimiento, CuentaAhorro
  */
 
 public class Movimiento {

@@ -11,8 +11,8 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
  * CCog/n = 0
  * DIT = 0 (Si no se cuenta la propia clase)
  * NOC = 2
- * CBO EFF = 1
- * CBO AFF = 3
+ * CBO EFF = 3; clases: CuentaAhorro, datoErroneoException, saldoInsuficienteException
+ * CBO AFF = 3; clases: Cliente, Credito, Debito
  */
 
 public abstract class Tarjeta {

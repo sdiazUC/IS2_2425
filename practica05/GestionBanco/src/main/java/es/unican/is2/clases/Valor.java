@@ -9,7 +9,7 @@ package es.unican.is2.clases;
  * DIT = 0 (si no se cuenta la propia clase)
  * NOC = 0
  * CBO EFF = 0
- * CBO AFF = 2
+ * CBO AFF = 2; clases: Cliente, CuentaValores
  */
 
 /**

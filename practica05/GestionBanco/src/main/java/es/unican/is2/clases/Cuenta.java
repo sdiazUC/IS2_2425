@@ -9,7 +9,7 @@ package es.unican.is2.clases;
  * DIT = 0 (si no se cuenta la propia clase)
  * NOC = 2
  * CBO EFF = 0
- * CBO AFF = 3
+ * CBO AFF = 3; clases: Cliente, CuentaAhorro, CuentaValores
  */
 
 public class Cuenta {

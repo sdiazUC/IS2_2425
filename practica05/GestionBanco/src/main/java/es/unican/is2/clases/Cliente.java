@@ -11,7 +11,7 @@ import java.util.List;
  * CCog/n = 8/11 = 0.73
  * DIT = 0 (si no se cuenta la propia clase)
  * NOC = 0
- * CBO EFF = 6
+ * CBO EFF = 6; clases: Cuenta, CuentaAhorro, CuentaValores, Tarjeta, Credito, Debito
  * CBO AFF = 0
  */
 
