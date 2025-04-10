@@ -1,6 +1,15 @@
 package es.unican.is2.clases;
 
 /**
+ * WMC
+ * DIT
+ * NOC
+ * CBO
+ * LCOM
+ * RFC
+ */
+
+/**
  * Clase que representa un valor en bolsa (paquete de acciones). 
  * Cada valor contiene un n�mero de acciones 
  * de una de las entidades del IBEX 35

@@ -7,6 +7,17 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * WMC     = 19
+ * WMCn    = 1.46
+ * CCog    = 8
+ * CCogn   = 0.42
+ * DIT     = 2
+ * NOC     = 0 
+ * CBO EFF = 1 Movmiento
+ * CBO AFF = 0
+ */
+
 public class CuentaAhorro extends Cuenta {
 
 	private List<Movimiento> Movimientos;
@@ -14,12 +25,20 @@ public class CuentaAhorro extends Cuenta {
 	private LocalDate caducidadCredito;
 	private double limiteDebito;
 
+	/**
+	 * CC   = 1
+	 * CCog = 1
+	 */
 	public CuentaAhorro(String numCuenta)  throws datoErroneoException {
 		super(numCuenta);
 		Movimientos = new LinkedList<Movimiento>();
 		limiteDebito = 1000;
 	}
-
+    
+	/**
+	 * CC = 2
+	 * CCog = 1
+	 */
 	public void ingresar(double x) throws datoErroneoException {
 		if (x <= 0)
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
@@ -31,6 +50,10 @@ public class CuentaAhorro extends Cuenta {
 		this.Movimientos.add(m);
 	}
 
+	/**
+	 * CC = 3
+	 * CCog = 2
+	 */
 	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
 		if (x <= 0)
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
@@ -44,6 +67,10 @@ public class CuentaAhorro extends Cuenta {
 		this.Movimientos.add(m);
 	}
 
+	/**
+	 * CC = 2
+	 * CCog = 1
+	 */
 	public void ingresar(String concepto, double x) throws datoErroneoException {
 		if (x <= 0)
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
@@ -55,6 +82,10 @@ public class CuentaAhorro extends Cuenta {
 		this.Movimientos.add(m);
 	}
 
+	/**
+	 * CC = 3
+	 * CCog = 2
+	 */
 	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException {
 		if (getSaldo() < x)
 			throw new saldoInsuficienteException("Saldo insuficiente");
@@ -68,6 +99,10 @@ public class CuentaAhorro extends Cuenta {
 		this.Movimientos.add(m);
 	}
 
+	/**
+	 * CC = 2
+	 * CCog = 1
+	 */
 	public double getSaldo() {
 		double r = 0.0;
 		for (int i = 0; i < this.Movimientos.size(); i++) {
@@ -77,30 +112,58 @@ public class CuentaAhorro extends Cuenta {
 		return r;
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public void addMovimiento(Movimiento m) {
 		Movimientos.add(m);
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public List<Movimiento> getMovimientos() {
 		return Movimientos;
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public LocalDate getCaducidadDebito() {
 		return caducidadDebito;
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public void setCaducidadDebito(LocalDate caducidadDebito) {
 		this.caducidadDebito = caducidadDebito;
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public LocalDate getCaducidadCredito() {
 		return caducidadCredito;
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public void setCaducidadCredito(LocalDate caducidadCredito) {
 		this.caducidadCredito = caducidadCredito;
 	}
 
+	/**
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public double getLimiteDebito() {
 		return limiteDebito;
 	}
