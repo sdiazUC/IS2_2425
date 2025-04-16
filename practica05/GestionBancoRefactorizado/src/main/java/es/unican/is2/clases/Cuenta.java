@@ -1,15 +1,16 @@
 package es.unican.is2.clases;
 
 /*
- * nº métodos = 2 (contando el constructor)
- * WMC = 2
- * WMC/n = 1
+ * nº métodos = 3 (contando el constructor)
+ * WMC = 3
+ * WMC/n = 3/3 = 1
  * CCog = 0
  * CCog/n = 0
  * DIT = 0 (si no se cuenta la propia clase)
  * NOC = 2
  * CBO EFF = 0
  * CBO AFF = 3; clases: Cliente, CuentaAhorro, CuentaValores
+ * CBO = 3
  */
 
 public abstract class Cuenta {
@@ -28,6 +29,8 @@ public abstract class Cuenta {
 		return numCuenta;
 	}
 
+	// CC = 1
+	// CCog = 0
 	public abstract double getSaldo();
 
 }

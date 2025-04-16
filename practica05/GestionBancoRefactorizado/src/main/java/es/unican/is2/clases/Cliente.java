@@ -4,15 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * nº métodos = 16
- * WMC = 17
- * WMC/n = 17/16 = 1.06
+ * nº métodos = 17
+ * WMC = 18
+ * WMC/n = 18/17 = 1.05
  * CCog = 1
- * CCog/n = 1/16 = 0.0625
+ * CCog/n = 1/17 = 0.0588
  * DIT = 0
  * NOC = 0
- * CBO EFF = 6; clases: Cuenta, CuentaAhorro, CuentaValores, Tarjeta, Credito, Debito
+ * CBO EFF = 2; clases: Cuenta, Tarjeta
  * CBO AFF = 0
+ * CBO = 2
  */
 
 public class Cliente {

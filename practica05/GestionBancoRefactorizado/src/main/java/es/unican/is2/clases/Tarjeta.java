@@ -6,15 +6,16 @@ import es.unican.is2.excepciones.datoErroneoException;
 import es.unican.is2.excepciones.saldoInsuficienteException;
 
 /*
- * nº de métodos = 1 (excluyendo métodos abstractos)
- * WCM = 1 (excluyendo métodos abstractos)
+ * nº de métodos = 3 (excluyendo métodos abstractos)
+ * WCM = 3 (excluyendo métodos abstractos)
  * WCM/n = 1 (excluyendo metodos abstractos)
  * CCog = 0
  * CCog/n = 0
  * DIT = 0 (Si no se cuenta la propia clase)
  * NOC = 2
  * CBO EFF = 3; clases: CuentaAhorro, datoErroneoException, saldoInsuficienteException
- * CBO AFF = 3; clases: Cliente, Credito, Debito
+ * CBO AFF = 4; clases: Cliente, Credito, Debito, CuentaAhorro
+ * CBO = 7
  */
 
 public abstract class Tarjeta {
@@ -34,13 +35,18 @@ public abstract class Tarjeta {
 		this.fechaCaducidad = fechaCaducidad;
 	}
 
+	// CC = 1
+	// CCog = 0
 	public void setFechaCaducidad(LocalDate fechaCaducidad) {
 		this.fechaCaducidad = fechaCaducidad;
 	}
 
+	// CC = 1
+	// CCog = 0
 	public LocalDate getFechaCaducidad() {
 		return this.fechaCaducidad;
 	}
+
 
 	/**
 	 * Retirada de dinero en cajero con la tarjeta
@@ -49,6 +55,7 @@ public abstract class Tarjeta {
 	 * @throws datoErroneoException
 	 */
 	public abstract void retirar(double x) throws saldoInsuficienteException, datoErroneoException;
+
 
 	/**
 	 * Pago en establecimiento con la tarjeta

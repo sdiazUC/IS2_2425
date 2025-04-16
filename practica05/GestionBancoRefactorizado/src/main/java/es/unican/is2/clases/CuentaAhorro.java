@@ -7,14 +7,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
+ * nº métodos = 12
  * WMC     = 19
- * WMCn    = 1.46
+ * WMCn    = 19/12 = 1.46
  * CCog    = 8
- * CCogn   = 0.42
+ * CCogn   = 8/12 = 0.66
  * DIT     = 1
  * NOC     = 0
- * CBO EFF = 1 Movmiento
- * CBO AFF = 0
+ * CBO EFF = 4: Movimiento, Cuenta, datoErroneoException, saldoInsuficienteException
+ * CBO AFF = 3: Credito, Debito, Tarjeta
+ * CBO     = 7
  */
 
 public class CuentaAhorro extends Cuenta {
@@ -135,6 +137,10 @@ public class CuentaAhorro extends Cuenta {
 		return limiteDebito;
 	}
 
+	/*
+	 * CC = 1
+	 * CCog = 0
+	 */
 	public List<Tarjeta> getTarjetasAsociadas() {
 		return this.tarjetasAsociadas;
 	}

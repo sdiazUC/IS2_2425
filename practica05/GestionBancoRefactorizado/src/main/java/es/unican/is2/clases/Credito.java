@@ -1,13 +1,14 @@
 package es.unican.is2.clases;
 
 /*
- * WCM:
- * WCMn:
- * CCog: 8
- * CCogn: 0.889
- * CBO AFF: 2; clases: Cliente, Tarjeta
+ * nº métodos = 9
+ * WCM: 15
+ * WCMn: 15/9 = 1.66
+ * CCog: 6
+ * CCogn: 6/9 = 0.66
+ * CBO AFF: 1; clases: CuentaAhorro
  * CBO EFF: 5; clases: Movimiento, CuentaAhoro, Tarjeta, saldoInsuficienteException, datoErroneoException
- * CBO: 7
+ * CBO: 6
  * DIT: 1
  * NOC: 0
  */
@@ -140,6 +141,11 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 		return total;
 	}
 
+
+	/*
+	* CC: 1
+	* CCog: 0
+	*/
 	private void addMovimiento(String concepto, double importe) {
 		Movimiento movimiento = new Movimiento(concepto, LocalDateTime.now(), importe);
 		MovimientosMensuales.add(movimiento);

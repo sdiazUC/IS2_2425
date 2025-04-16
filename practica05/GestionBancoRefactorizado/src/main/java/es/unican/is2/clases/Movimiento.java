@@ -3,15 +3,16 @@ package es.unican.is2.clases;
 import java.time.LocalDateTime;
 
 /*
- * nº métodos = 7 (contando el constructor)
+ * nº métodos = 8 (contando el constructor)
  * WCM = 8 (contando el contructor)
- * WCM/n = 1 (contando el contructor)
+ * WCM/n = 1/1 = 1 (contando el contructor)
  * CCog = 0
  * CCog/n = 0
  * DIT = 0
  * NOC = 0
- * CBO EFF = 0
- * CBO AFF = 2; clases: Movimiento, CuentaAhorro
+ * CBO EFF = 0:
+ * CBO AFF = 2:  Credito, CuentaAhorro
+ * CBO     = 2
  */
 
 public class Movimiento {
@@ -20,6 +21,8 @@ public class Movimiento {
 	private LocalDateTime fecha;
 	private double importe;
 
+	// CC = 1
+	// CCog = 0
 	public Movimiento(String concepto, LocalDateTime fecha, double importe) {
 		this.concepto = concepto;
 		this.fecha = fecha;

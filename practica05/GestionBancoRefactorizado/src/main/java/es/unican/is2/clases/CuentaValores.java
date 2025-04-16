@@ -4,14 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * WMC     = 4
- * WMCn    = 1.33
+ * nº métodos = 4
+ * WMC     = 5
+ * WMCn    = 5/4 = 1.25
  * CCog    = 4
- * CCogn   = 1.33
+ * CCogn   = 4/4 = 1
  * DIT     = 1
  * NOC     = 0
  * CBO EFF = 2 Valor, Cuenta
  * CBO AFF = 0
+ * CBO     = 2
  */
 
 public class CuentaValores extends Cuenta {
@@ -42,6 +44,8 @@ public class CuentaValores extends Cuenta {
 		return true;
 	}
 
+	// CC   = 1
+	// CCog = 0
 	@Override
 	public double getSaldo() {
 		return 0;

@@ -6,14 +6,16 @@ import es.unican.is2.excepciones.datoErroneoException;
 import es.unican.is2.excepciones.saldoInsuficienteException;
 
 /*
- * WMC     = 8
- * WMCn    = 1.33
+ * nº métodos = 5
+ * WMC     = 7
+ * WMCn    = 7/5 = 1.4
  * CCog    = 3
- * CCogn   = 0.375
+ * CCogn   = 3/5 = 0.6
  * DIT     = 1
  * NOC     = 0
- * CBO EFF = 2 Tarjeta, CuentaAhorro
- * CBO AFF = 0
+ * CBO EFF = 4: Tarjeta, CuentaAhorro, saldoInsuficienteException, datoErroneoException
+ * CBO AFF = 1: CuentaAhorro
+ * CBO     = 5
  */
 
 public class Debito extends Tarjeta {
