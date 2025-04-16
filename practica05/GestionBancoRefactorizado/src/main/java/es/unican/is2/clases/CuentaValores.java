@@ -8,8 +8,8 @@ import java.util.List;
  * WMCn    = 1.33
  * CCog    = 4
  * CCogn   = 1.33
- * DIT     = 2
- * NOC     = 0 
+ * DIT     = 1
+ * NOC     = 0
  * CBO EFF = 2 Valor, Cuenta
  * CBO AFF = 0
  */
@@ -42,4 +42,8 @@ public class CuentaValores extends Cuenta {
 		return true;
 	}
 
+	@Override
+	public double getSaldo() {
+		return 0;
+	}
 }

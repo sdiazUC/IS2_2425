@@ -10,8 +10,8 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
  * WMCn    = 1.33
  * CCog    = 3
  * CCogn   = 0.375
- * DIT     = 2
- * NOC     = 0 
+ * DIT     = 1
+ * NOC     = 0
  * CBO EFF = 2 Tarjeta, CuentaAhorro
  * CBO AFF = 0
  */
@@ -22,8 +22,8 @@ public class Debito extends Tarjeta {
 
 	// CC   = 1
 	// CCog = 1
-	public Debito(String numero, String titular, String cvc, CuentaAhorro cuentaAsociada) {
-		super(numero, titular, cvc, cuentaAsociada);
+	public Debito(String numero, String titular, String cvc, CuentaAhorro cuentaAsociada, LocalDate fechaCaducidad) {
+		super(numero, titular, cvc, cuentaAsociada, fechaCaducidad);
 		saldoDiarioDisponible = cuentaAsociada.getLimiteDebito();
 	}
 
@@ -47,12 +47,6 @@ public class Debito extends Tarjeta {
 		}
 		this.cuentaAsociada.retirar("Compra en : " + datos, x);
 		saldoDiarioDisponible-=x;
-	}
-
-	// CC   = 1
-	// CCog = 0
-	public LocalDate getCaducidadDebito() {
-		return this.cuentaAsociada.getCaducidadDebito();
 	}
 
 	// CC   = 1

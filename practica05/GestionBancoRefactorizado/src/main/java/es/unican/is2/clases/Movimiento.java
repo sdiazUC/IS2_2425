@@ -15,43 +15,50 @@ import java.time.LocalDateTime;
  */
 
 public class Movimiento {
+
 	private String concepto;
 	private LocalDateTime fecha;
 	private double importe;
 
+	public Movimiento(String concepto, LocalDateTime fecha, double importe) {
+		this.concepto = concepto;
+		this.fecha = fecha;
+		this.importe = importe;
+	}
+
 	// CC = 1
 	// CCog = 0
-	public double getI() {
+	public double getImporte() {
 		return importe;
 	}
 
 	// CC = 1
 	// CCog = 0
-	public void setI(double newMImporte) {
+	public void setImporte(double newMImporte) {
 		importe = newMImporte;
 	}
 
 	// CC = 1
 	// CCog = 0
-	public String getC() {
+	public String getConcepto() {
 		return concepto;
 	}
 
 	// CC = 1
 	// CCog = 0
-	public void setC(String newMConcepto) {
+	public void setConcepto(String newMConcepto) {
 		concepto = newMConcepto;
 	}
 
 	// CC = 1
 	// CCog = 0
-	public LocalDateTime getF() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
 	// CC = 1
 	// CCog = 0
-	public void setF(LocalDateTime newMFecha) {
+	public void setFecha(LocalDateTime newMFecha) {
 		fecha = newMFecha;
 	}
 

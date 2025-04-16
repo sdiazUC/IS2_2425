@@ -9,20 +9,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CuentaValoresTest {
-	
+
 	private CuentaValores sut;
-	
+
 	@BeforeEach
 	public void inicializa() {
 		sut = new CuentaValores("794311");
 	}
-	
+
 	@Test
 	public void testConstructor() {
 		assertTrue(sut.getNumCuenta().equals("794311"));
 		assertTrue(sut.getValores().size()==0);
 	}
-	
+
 	@Test
 	public void testAnhadeValor() {
 		// CASOS VALIDOS
@@ -30,14 +30,18 @@ public class CuentaValoresTest {
 		assertTrue(sut.anhadeValor(v));
 		assertTrue(sut.getValores().size()==1);
 		assertEquals(sut.getValores().get(0), v);
-		
+
 		v = new Valor("BancoSantander", 100, 200);
 		assertTrue(sut.anhadeValor(v));
 		assertTrue(sut.getValores().size()==2);
 		assertEquals(sut.getValores().get(1), v);
-		
+
 		// CASOS NO VALIDOS
 		assertFalse(sut.anhadeValor(new Valor("Telepizza", 10, 2.5)));
-		
+	}
+
+	@Test
+	public void testSaldo() {
+		assertEquals(sut.getSaldo(), 0);
 	}
 }

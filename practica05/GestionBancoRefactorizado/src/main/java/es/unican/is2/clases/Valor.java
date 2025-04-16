@@ -67,7 +67,6 @@ public class Valor {
 	public boolean equals(Object obj) {
 		Valor other = (Valor)obj;
 		return (entidad.equals(other.entidad) && numAcciones==other.numAcciones);
-
 	}
 
 }

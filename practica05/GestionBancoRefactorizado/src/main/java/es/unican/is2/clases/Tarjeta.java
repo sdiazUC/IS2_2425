@@ -1,5 +1,7 @@
 package es.unican.is2.clases;
 
+import java.time.LocalDate;
+
 import es.unican.is2.excepciones.datoErroneoException;
 import es.unican.is2.excepciones.saldoInsuficienteException;
 
@@ -19,15 +21,25 @@ public abstract class Tarjeta {
 
 	protected String numero, titular, cvc;
 	protected CuentaAhorro cuentaAsociada;
+	private LocalDate fechaCaducidad;
 
 	// CC = 1
 	// CCog = 0
 	public Tarjeta(String numero, String titular, String cvc,
-			CuentaAhorro cuentaAsociada) {
+			CuentaAhorro cuentaAsociada, LocalDate fechaCaducidad) {
 		this.numero = numero;
 		this.titular = titular;
 		this.cvc = cvc;
 		this.cuentaAsociada = cuentaAsociada;
+		this.fechaCaducidad = fechaCaducidad;
+	}
+
+	public void setFechaCaducidad(LocalDate fechaCaducidad) {
+		this.fechaCaducidad = fechaCaducidad;
+	}
+
+	public LocalDate getFechaCaducidad() {
+		return this.fechaCaducidad;
 	}
 
 	/**
