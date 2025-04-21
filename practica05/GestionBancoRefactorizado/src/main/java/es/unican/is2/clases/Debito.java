@@ -9,8 +9,8 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
  * nº métodos = 5
  * WMC     = 7
  * WMCn    = 7/5 = 1.4
- * CCog    = 3
- * CCogn   = 3/5 = 0.6
+ * CCog    = 2
+ * CCogn   = 2/5 = 0.4
  * DIT     = 1
  * NOC     = 0
  * CBO EFF = 4: Tarjeta, CuentaAhorro, saldoInsuficienteException, datoErroneoException
@@ -23,7 +23,7 @@ public class Debito extends Tarjeta {
 	private double saldoDiarioDisponible;
 
 	// CC   = 1
-	// CCog = 1
+	// CCog = 0
 	public Debito(String numero, String titular, String cvc, CuentaAhorro cuentaAsociada, LocalDate fechaCaducidad) {
 		super(numero, titular, cvc, cuentaAsociada, fechaCaducidad);
 		saldoDiarioDisponible = cuentaAsociada.getLimiteDebito();
@@ -33,7 +33,7 @@ public class Debito extends Tarjeta {
 	// CCog = 1
 	@Override
 	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
-		if (saldoDiarioDisponible<x) {
+		if (saldoDiarioDisponible<x) { // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 		this.cuentaAsociada.retirar("Retirada en cajero", x);
@@ -44,7 +44,7 @@ public class Debito extends Tarjeta {
 	// CCog = 1
 	@Override
 	public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {
-		if (saldoDiarioDisponible<x) {
+		if (saldoDiarioDisponible<x) { // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 		this.cuentaAsociada.retirar("Compra en : " + datos, x);

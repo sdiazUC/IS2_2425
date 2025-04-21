@@ -51,14 +51,15 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	*/
 	@Override
 	public void retirar(double importe) throws saldoInsuficienteException, datoErroneoException {
-		if (importe < 0) {
+		if (importe < 0) { // CCog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
 
 		importe += importe * COMISION_RETIRADA_CREDITO;
 
-		if (getGastosAcumulados() + importe > credito)
+		if (getGastosAcumulados() + importe > credito) { // CCog + 1
 			throw new saldoInsuficienteException("Credito insuficiente");
+		}
 
 		addMovimiento("Retirada en cajero", -importe);
 	}
@@ -69,11 +70,11 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	*/
 	@Override
 	public void pagoEnEstablecimiento(String datos, double importe) throws saldoInsuficienteException, datoErroneoException {
-		if (importe < 0) {
+		if (importe < 0) { // CCog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
 
-		if (this.getGastosAcumulados() + importe > credito) {
+		if (this.getGastosAcumulados() + importe > credito) { // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 
@@ -90,7 +91,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	public void liquidar() {
 		double total = this.getGastosAcumulados();
 
-		if (total != 0) {
+		if (total != 0) { // CCog + 1
 			Movimiento liquidacion = new Movimiento(
 				CONCEPTO_LIQUIDACION_CREDITO,
 				LocalDateTime.now(),
@@ -134,7 +135,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	*/
 	private double getGastosAcumulados() {
 		double total = 0.0;
-		for (int i = 0; i < this.MovimientosMensuales.size(); i++) {
+		for (int i = 0; i < this.MovimientosMensuales.size(); i++) { // CCog + 1
 			Movimiento movimiento = (Movimiento) MovimientosMensuales.get(i);
 			total += movimiento.getImporte();
 		}
