@@ -18,24 +18,24 @@ package es.unican.is2.clases;
 
 import es.unican.is2.excepciones.datoErroneoException;
 import es.unican.is2.excepciones.saldoInsuficienteException;
- 
- 
+
+
  public class Credito extends Tarjeta {
-	 
+
 	 private double credito;
 	 private List<Movimiento> MovimientosMensuales;
 	 private List<Movimiento> historicoMovimientos;
- 
+
 	 /*
 	  * CC: 1
 	  * CCog: 0
 	  */
 	 public Credito(String numero, String titular, String cvc,
 			 CuentaAhorro cuentaAsociada, double credito) {
-		 super(numero, titular, cvc, cuentaAsociada);
-		 this.credito = credito;
+		super(numero, titular, cvc, cuentaAsociada);
+		this.credito = credito;
 	 }
- 
+
 	 /*
 	  * CC: 3
 	  * CCog: 3
@@ -48,35 +48,35 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	  */
 	 @Override
 	 public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
-		 if (x<0)
+		 if (x<0) // CCog + 1
 			 throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		 
+
 		 Movimiento m = new Movimiento();
 		 LocalDateTime now = LocalDateTime.now();
 		 m.setF(now);
 		 m.setC("Retirada en cajero");
 		 x += x * 0.05; // Comision por operacion con tarjetas credito
 		 m.setI(-x);
-		 
-		 if (getGastosAcumulados()+x > credito)
+
+		 if (getGastosAcumulados()+x > credito) // CCog + 1
 			 throw new saldoInsuficienteException("Credito insuficiente");
-		 else {
+		 else { // CCog + 1
 			 MovimientosMensuales.add(m);
 		 }
 	 }
- 
+
 	 /*
 	  * CC: 3
 	  * CCog: 2
 	  */
 	 @Override
 	 public void pagoEnEstablecimiento(String datos, double x) throws saldoInsuficienteException, datoErroneoException {
-		 if (x<0)
+		 if (x<0) // CCog + 1
 			 throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		 
-		 if (getGastosAcumulados() + x > credito)
+
+		 if (getGastosAcumulados() + x > credito) // CCog + 1
 			 throw new saldoInsuficienteException("Saldo insuficiente");
-		 
+
 		 Movimiento m = new Movimiento();
 		 LocalDateTime now = LocalDateTime.now();
 		 m.setF(now);
@@ -84,21 +84,21 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 		 m.setI(-x);
 		 MovimientosMensuales.add(m);
 	 }
-	 
+
 	 /*
 	  * CC: 2
 	  * CCog: 1
 	  */
 	 private double getGastosAcumulados() {
 		 double r = 0.0;
-		 for (int i = 0; i < this.MovimientosMensuales.size(); i++) {
+		 for (int i = 0; i < this.MovimientosMensuales.size(); i++) { // CCog + 1
 			 Movimiento m = (Movimiento) MovimientosMensuales.get(i);
 			 r += m.getI();
 		 }
 		 return r;
 	 }
-	 
-	 
+
+
 	 /*
 	  * CC: 1
 	  * CCog: 0
@@ -106,7 +106,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	 public LocalDate getCaducidadCredito() {
 		 return this.cuentaAsociada.getCaducidadCredito();
 	 }
- 
+
 	 /*
 	  * CC: 3
 	  * CCog: 2
@@ -120,19 +120,19 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 		 liq.setF(now);
 		 liq.setC("Liquidacion de operaciones tarjeta credito");
 		 double r = 0.0;
-		 for (int i = 0; i < this.MovimientosMensuales.size(); i++) {
+		 for (int i = 0; i < this.MovimientosMensuales.size(); i++) { // CCog + 1
 			 Movimiento m = (Movimiento) MovimientosMensuales.get(i);
 			 r += m.getI();
 		 }
 		 liq.setI(-r);
-	 
-		 if (r != 0)
+
+		 if (r != 0) // CCog + 1
 			 cuentaAsociada.addMovimiento(liq);
-		 
+
 		 historicoMovimientos.addAll(MovimientosMensuales);
 		 MovimientosMensuales.clear();
 	 }
- 
+
 	 /*
 	  * CC: 1
 	  * CCog: 0
@@ -140,7 +140,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	 public List<Movimiento> getMovimientosMensuales() {
 		 return MovimientosMensuales;
 	 }
-	 
+
 	 /*
 	  * CC: 1
 	  * CCog: 0
@@ -148,7 +148,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	 public CuentaAhorro getCuentaAsociada() {
 		 return cuentaAsociada;
 	 }
-	 
+
 	 /*
 	  * CC: 1
 	  * CCog: 0

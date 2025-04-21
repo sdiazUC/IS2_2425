@@ -10,10 +10,10 @@ import java.util.List;
 /*
  * WMC     = 19
  * WMCn    = 1.46
- * CCog    = 8
- * CCogn   = 0.42
+ * CCog    = 7
+ * CCogn   = 0.54
  * DIT     = 2
- * NOC     = 0 
+ * NOC     = 0
  * CBO EFF = 1 Movmiento
  * CBO AFF = 0
  */
@@ -27,20 +27,20 @@ public class CuentaAhorro extends Cuenta {
 
 	/**
 	 * CC   = 1
-	 * CCog = 1
+	 * CCog = 0
 	 */
 	public CuentaAhorro(String numCuenta)  throws datoErroneoException {
 		super(numCuenta);
 		Movimientos = new LinkedList<Movimiento>();
 		limiteDebito = 1000;
 	}
-    
+
 	/**
 	 * CC = 2
 	 * CCog = 1
 	 */
 	public void ingresar(double x) throws datoErroneoException {
-		if (x <= 0)
+		if (x <= 0) // CCog + 1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
@@ -55,9 +55,9 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 2
 	 */
 	public void retirar(double x) throws saldoInsuficienteException, datoErroneoException {
-		if (x <= 0)
+		if (x <= 0) // CCog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
-		if (getSaldo() < x)
+		if (getSaldo() < x) // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
@@ -72,7 +72,7 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 1
 	 */
 	public void ingresar(String concepto, double x) throws datoErroneoException {
-		if (x <= 0)
+		if (x <= 0) // CCog + 1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
@@ -87,9 +87,9 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 2
 	 */
 	public void retirar(String concepto, double x) throws saldoInsuficienteException, datoErroneoException {
-		if (getSaldo() < x)
+		if (getSaldo() < x) // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
-		if (x <= 0)
+		if (x <= 0) // CCog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
@@ -105,7 +105,7 @@ public class CuentaAhorro extends Cuenta {
 	 */
 	public double getSaldo() {
 		double r = 0.0;
-		for (int i = 0; i < this.Movimientos.size(); i++) {
+		for (int i = 0; i < this.Movimientos.size(); i++) { // CCog + 1
 			Movimiento m = (Movimiento) Movimientos.get(i);
 			r += m.getI();
 		}

@@ -57,11 +57,11 @@ public class Cliente {
 	// CC = 3
 	// CCog = 2
 	public void anhadeTarjeta(Tarjeta t) {
+		if (t instanceof Debito) { // CCog + 1
 		tarjetas.add(t);
-		if (t instanceof Debito) {
 			Debito td = (Debito)t;
 			td.getCuentaAsociada().setCaducidadDebito(td.getCaducidadDebito());
-		} else {
+		} else { // CCog + 1
 			Credito tc = (Credito) t;
 			tc.getCuentaAsociada().setCaducidadCredito(tc.getCaducidadCredito());
 		}

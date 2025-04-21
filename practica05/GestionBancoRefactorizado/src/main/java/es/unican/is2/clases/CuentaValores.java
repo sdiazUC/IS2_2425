@@ -7,8 +7,8 @@ import java.util.List;
  * nº métodos = 4
  * WMC     = 5
  * WMCn    = 5/4 = 1.25
- * CCog    = 4
- * CCogn   = 4/4 = 1
+ * CCog    = 3
+ * CCogn   = 3/4 = 0.75
  * DIT     = 1
  * NOC     = 0
  * CBO EFF = 2 Valor, Cuenta
@@ -21,7 +21,7 @@ public class CuentaValores extends Cuenta {
 	private List<Valor> valores;
 
 	// CC   = 1
-	// CCog = 1
+	// CCog = 0
 	public CuentaValores(String numCuenta) {
 		super(numCuenta);
 		valores = new LinkedList<Valor>();
@@ -36,8 +36,8 @@ public class CuentaValores extends Cuenta {
 	// CC   = 2
 	// CCog = 3
 	public boolean anhadeValor(Valor valor) {
-		for (Valor v:valores) {
-			if (v.getEntidad().equals(valor.getEntidad()))
+		for (Valor v:valores) { // CCog + 1
+			if (v.getEntidad().equals(valor.getEntidad())) // CCog + 2
 				return false;
 		}
 		valores.add(valor);

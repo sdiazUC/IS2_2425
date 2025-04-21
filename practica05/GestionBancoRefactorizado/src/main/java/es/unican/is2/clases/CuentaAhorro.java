@@ -10,8 +10,8 @@ import java.util.List;
  * nº métodos = 12
  * WMC     = 19
  * WMCn    = 19/12 = 1.46
- * CCog    = 8
- * CCogn   = 8/12 = 0.66
+ * CCog    = 7
+ * CCogn   = 7/12 = 0.58
  * DIT     = 1
  * NOC     = 0
  * CBO EFF = 4: Movimiento, Cuenta, datoErroneoException, saldoInsuficienteException
@@ -30,7 +30,7 @@ public class CuentaAhorro extends Cuenta {
 
 	/*
 	 * CC   = 1
-	 * CCog = 1
+	 * CCog = 0
 	 */
 	public CuentaAhorro(String numCuenta) throws datoErroneoException {
 		super(numCuenta);
@@ -44,7 +44,7 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 1
 	 */
 	public void ingresar(double importe) throws datoErroneoException {
-		if (importe <= 0) {
+		if (importe <= 0) { // CCog + 1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		}
 
@@ -57,11 +57,11 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 2
 	 */
 	public void retirar(double importe) throws saldoInsuficienteException, datoErroneoException {
-		if (importe <= 0) {
+		if (importe <= 0) { // CCog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
 
-		if (getSaldo() < importe) {
+		if (getSaldo() < importe) { // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 
@@ -74,7 +74,7 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 1
 	 */
 	public void ingresar(String concepto, double importe) throws datoErroneoException {
-		if (importe <= 0) {
+		if (importe <= 0) { // CCog + 1
 			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
 		}
 
@@ -87,11 +87,11 @@ public class CuentaAhorro extends Cuenta {
 	 * CCog = 2
 	 */
 	public void retirar(String concepto, double importe) throws saldoInsuficienteException, datoErroneoException {
-		if (getSaldo() < importe) {
+		if (getSaldo() < importe) { // CCog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 
-		if (importe <= 0) {
+		if (importe <= 0) { // CCog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
 
@@ -106,7 +106,7 @@ public class CuentaAhorro extends Cuenta {
 	 */
 	public double getSaldo() {
 		double total = 0.0;
-		for (int i = 0; i < this.Movimientos.size(); i++) {
+		for (int i = 0; i < this.Movimientos.size(); i++) { // CCog + 1
 			Movimiento movimiento = (Movimiento) Movimientos.get(i);
 			total += movimiento.getImporte();
 		}
