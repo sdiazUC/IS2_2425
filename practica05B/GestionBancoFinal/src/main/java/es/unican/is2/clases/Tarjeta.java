@@ -26,7 +26,7 @@ public abstract class Tarjeta {
 
 	// CC = 1
 	// CCog = 0
-	public Tarjeta(String numero, String titular, String cvc,
+	protected Tarjeta(String numero, String titular, String cvc,
 			CuentaAhorro cuentaAsociada, LocalDate fechaCaducidad) {
 		this.numero = numero;
 		this.titular = titular;

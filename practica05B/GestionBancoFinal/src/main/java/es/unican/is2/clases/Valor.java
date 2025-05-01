@@ -66,8 +66,15 @@ public class Valor {
 	// CC = 1
 	// CCog = 0
 	public boolean equals(Object obj) {
-		Valor other = (Valor)obj;
-		return (entidad.equals(other.entidad) && numAcciones==other.numAcciones);
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Valor other = (Valor) obj;
+	    return (entidad != null && entidad.equals(other.entidad)) &&
+	           numAcciones == other.numAcciones;
 	}
 
 }

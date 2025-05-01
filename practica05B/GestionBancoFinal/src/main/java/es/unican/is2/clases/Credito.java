@@ -22,7 +22,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 
  public class Credito extends Tarjeta {
 
-	private double credito;
+	private double limiteCredito;
 	private List<Movimiento> MovimientosMensuales;
 	private List<Movimiento> historicoMovimientos;
 
@@ -34,9 +34,9 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 	* CCog: 0
 	*/
 	public Credito(String numero, String titular, String cvc,
-			CuentaAhorro cuentaAsociada, double credito, LocalDate fechaCaducidad) {
+			CuentaAhorro cuentaAsociada, double limiteCredito, LocalDate fechaCaducidad) {
 		super(numero, titular, cvc, cuentaAsociada, fechaCaducidad);
-		this.credito = credito;
+		this.limiteCredito = limiteCredito;
 	}
 
 	/*
@@ -57,7 +57,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 
 		importe += importe * COMISION_RETIRADA_CREDITO;
 
-		if (getGastosAcumulados() + importe > credito)
+		if (getGastosAcumulados() + importe > limiteCredito)
 			throw new saldoInsuficienteException("Credito insuficiente");
 
 		addMovimiento("Retirada en cajero", -importe);
@@ -73,7 +73,7 @@ import es.unican.is2.excepciones.saldoInsuficienteException;
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 		}
 
-		if (this.getGastosAcumulados() + importe > credito) {
+		if (this.getGastosAcumulados() + importe > limiteCredito) {
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}
 

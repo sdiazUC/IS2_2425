@@ -19,7 +19,7 @@ public abstract class Cuenta {
 
 	// CC = 1
 	// CCog = 0
-	public Cuenta(String numCuenta) {
+	protected Cuenta(String numCuenta) {
 		this.numCuenta = numCuenta;
 	}
 

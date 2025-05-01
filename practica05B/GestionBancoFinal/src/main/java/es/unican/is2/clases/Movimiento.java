@@ -69,8 +69,16 @@ public class Movimiento {
 	// CCog = 0
 	@Override
 	public boolean equals(Object obj) {
-		Movimiento other = (Movimiento)obj;
-		return (concepto.equals(other.concepto) && fecha.equals(other.fecha)&& importe==other.importe);
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Movimiento other = (Movimiento) obj;
+	    return (concepto != null && concepto.equals(other.concepto)) &&
+	           (fecha != null && fecha.equals(other.fecha)) &&
+	           importe == other.importe;
 	}
 
 }
